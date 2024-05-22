@@ -169,7 +169,7 @@ From the ROC curve plot, the model has a relative good performance with area und
 
 However, I chose to explore other models to check performance and churn prediction for better results.
 
-### 2. DecisionTree Classifier
+###  DecisionTree Classifier
 For the class labeled "False":
 
 Precision: 0.95 - This means that when the model predicts "False," it is correct 95% of the time.
@@ -208,7 +208,56 @@ Test Accuracy: 0.9370
 
 Hooray!! The model no longer overfits and has an overall improvement!
 
-###. K-Nearest Neighbors
+![image](https://github.com/Annegit1/Phase_3_project/assets/151770828/1e2fe2ec-22b7-4b92-a22c-e15af98eeaad)
+
+###  Random Forest Classifier
+
+Regularized Random Forest Accuracy: 0.9430284857571214
+
+Confusion Matrix:
+ [[561   5]
+ [ 33  68]]
+
+Classification Report:
+               precision    recall  f1-score   support
+
+       False       0.94      0.99      0.97       566
+        True       0.93      0.67      0.78       101
+
+    accuracy                           0.94       667
+   macro avg       0.94      0.83      0.87       667
+weighted avg       0.94      0.94      0.94       667
+
+
+
+Training Accuracy (Regularized Random Forest): 0.9756189047261815
+Testing Accuracy (Regularized Random Forest): 0.9430284857571214
+Precision:
+
+Non-Churn (False): 0.94 - Out of all the customers predicted as non-churn, 94% actually did not churn.
+Churn (True): 0.93 - Out of all the customers predicted as churn, 93% actually churned.
+    
+Recall:
+
+Non-Churn (False): 0.99 - Out of all the customers who did not churn, the model correctly identified 99% of them.
+Churn (True): 0.67 - Out of all the customers who churned, the model correctly identified 67% of them.
+    
+F1-Score:
+
+Non-Churn (False): 0.97 - The F1-score is the harmonic mean of precision and recall for non-churn, indicating high accuracy.
+Churn (True): 0.78 - The F1-score for churn indicates a relatively good balance between precision and recall.
+
+![image](https://github.com/Annegit1/Phase_3_project/assets/151770828/71e7bdb8-481b-4365-934d-ec23881506d1)
+
+The confusion matrix show an improvement since there is no high accuracy compared to the overfitted model.
+
+![image](https://github.com/Annegit1/Phase_3_project/assets/151770828/1c4c96ec-6079-4480-9ae5-11d189c3d5ee)
+
+From the ROC curve above, the model performance has a good prediction since the area under the curve is 0.94, which is close to 1.
+![image](https://github.com/Annegit1/Phase_3_project/assets/151770828/edb0ff09-498b-44d4-8a42-e2bcc4493408)
+
+
+### K-Nearest Neighbors
 
 Further, I chose to use anaother model, KNN, for prediction. I also thought scaling my data would be necessary for KNN model since it is a distance-based algorithm
 
