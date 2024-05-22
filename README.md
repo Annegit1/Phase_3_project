@@ -190,3 +190,102 @@ Class Imbalance: The class "True" (churn) has fewer instances (101) compared to 
 Precision and Recall for "True" class: The precision and recall for the "True" class are lower compared to the "False" class, indicating that there is room for improvement in identifying churn customers accurately.
 
 The Decision Tree model is performing well on this dataset. However, we further evaluation metrics or techniques to fine-tune the model for a more accurate performance, using grid searchCV.
+
+Lets improve the model above using graidsearch and hyperparameter tuning
+
+![image](https://github.com/Annegit1/Phase_3_project/assets/151770828/b777dab9-4ffc-49d6-bc4b-6b3af15df44b)
+
+Improved Performance
+
+High Accuracy: The model's accuracy of 94% is very high.
+Improved Precision for "True" class: Precision for the "True" class (churn) has increased to 0.88, meaning fewer false positives compared to previous models.
+Improved Recall for "False" class: Recall for the "False" class (non-churn) remains high at 0.98, indicating that the model is very good at identifying non-churn customers.
+
+The model's accuracy seems to have improved. This I further tested the test and train scores to check for overfitting.
+
+Training Accuracy: 0.9572
+Test Accuracy: 0.9370
+
+Hooray!! The model no longer overfits and has an overall improvement!
+
+###. K-Nearest Neighbors
+
+Further, I chose to use anaother model, KNN, for prediction. I also thought scaling my data would be necessary for KNN model since it is a distance-based algorithm
+
+Precision:
+
+Non-Churn (False): 0.89 - Out of all the customers predicted as non-churn, 89% actually did not churn.
+Churn (True): 0.85 - Out of all the customers predicted as churn, 85% actually churned.
+    
+Recall:
+
+Non-Churn (False): 0.99 - Out of all the customers who did not churn, the model correctly identified 99% of them.
+Churn (True): 0.33 - Out of all the customers who churned, the model correctly identified 33% of them.
+    
+F1-Score:
+
+Non-Churn (False): 0.94 - The F1-score is the harmonic mean of precision and recall for non-churn, indicating high accuracy.
+Churn (True): 0.47 - The F1-score for churn indicates moderate performance, with a significant need for improvement in recall.
+
+![image](https://github.com/Annegit1/Phase_3_project/assets/151770828/2170dfe7-3bc9-4ec3-bc16-8706e540f7f9)
+
+- The model is highly effective in identifying customers who will not churn, with 560 out of 566 non-churn customers correctly classified.
+
+- False Positives (FP): Only 6 customers who are non-churn were incorrectly predicted as churn. This means the model is quite precise in predicting non-churn customers.
+
+- False Negatives (FN): There are 68 customers who were predicted to stay but actually churned. This indicates a weakness in identifying all potential churners, which could be critical for retention strategies.
+
+- True Positives (TP):The model correctly identified 33 churners out of 101 actual churners. This indicates that while the model has some capability in identifying churners, it misses a significant portion.
+
+
+Therefore, I proceeded to improve the model for more accuracy using cross-validation and support vector machine. I used pipeline to apply the SVM and get the best hyperparameters.
+
+
+Key Observations:
+
+Model Performance: The logistic regression model shows good performance with high accuracy on both training and test datasets, and consistent cross-validation scores.
+
+Generalization: The small gap between train and test accuracy indicates that the model generalizes well to unseen data.
+
+Cross-Validation Insight: The mean cross-validation score supports the robustness of the model, providing confidence in its predictive capability.
+
+The mean cross-validation score of 89.12% served as a valuable tool for assessing and improving the model's performance and generalization ability.
+
+The train accuracy is 89.12% and test accuracy is 86.96%. Not bad, the model is much better now. 
+
+The final step would then be to check which model of the 4 worked best and why.
+
+Logistic Regression (baseline_model_accuracy): 0.8605697151424287
+
+Decision tree accuracy: 0.9370314842578711
+
+Random Forest accuracy: 0.9430284857571214
+
+K-Nearest Neighbors accuracy: 0.8912228057014253
+
+### Conclusions
+
+It is noted that customers who have higher usage during the day ("total day minutes" and "total day charge") and those who frequently contact customer service ("customer service calls") are more likely to churn. This suggests that dissatisfaction with service quality or billing issues during peak hours may drive churn.
+
+From the 4 models tested on the dataset, The Random Forest produces the best results with an accuracy of 94.3%.
+
+According to the feature importances, Total day minutes, Total day charge, Customer service calls, International plan,Total eve charge are the top contributing factors to customer churning or not.
+
+Based on the identified key factors influencing customer churn, actionable strategies can be formulated to retain customers identified as high risk for churn.
+
+
+### Limitations of the model
+
+Despite providing feature importances, the random forest may cause a lack of interpretability due to complexity of the hyperparemeter sensitivity. This may hinder the ability to fully understand the key factors influencing customer churn, especially if stakeholders require detailed insights into the drivers of churn. Further, relative importance of features for prediction may not always reflect the true causal relationships between features and the target variable. 
+
+### Recommendations
+
+- Proactive customer service: Since customer service calls are a significant factor, providing proactive and effective customer support can help address issues or concerns promptly, potentially reducing churn.
+
+- Personalized offers or incentives: Identifying customers with international plans and offering personalized discounts or incentives may encourage them to stay with the telecommunications company.
+
+- Monitoring usage patterns: Monitoring total day minutes and charges can help identify customers who are using the service extensively, potentially indicating dissatisfaction or a need for alternative plans. Offering tailored solutions or upgrades may help retain these customers.
+
+- Targeted communication: Utilizing the insights from the predictive model, targeted communication strategies can be implemented to reach out to customers at high risk of churn. This may involve personalized outreach campaigns, targeted promotions, or loyalty programs aimed at retaining these customers.
+
+- Feedback mechanisms: Implementing effective feedback mechanisms to gather insights from churned customers can help identify underlying issues and inform strategies for continuous improvement.
